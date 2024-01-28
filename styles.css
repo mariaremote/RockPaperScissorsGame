@@ -1,0 +1,46 @@
+body {
+    background-color: blanchedalmond;
+}
+
+.selections {
+    display: flex;
+    justify-content: center;
+}
+
+.selection {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 4rem;
+}
+
+.selection:hover {
+    transform: scale(1.2);
+    transition: 300ms;
+}
+
+.secret {
+    visibility: hidden;
+}
+
+.results {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(2,1fr);
+    justify-items: center;
+    align-items: center;
+}
+
+.results h2 {
+    display: inline-block;
+}
+
+.result-score {
+    margin-right: .4rem;
+    font-size: .9em;
+    color: goldenrod;
+    font-weight: 800;
+}
