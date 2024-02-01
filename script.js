@@ -1,4 +1,5 @@
-// TODO: make the selections fade out after 5 or so
+
+// DECLARATIONS 
 
 const selectionButtons = document.querySelectorAll('[data-selection]');
 const spockButton = document.getElementById('spock')
@@ -27,6 +28,9 @@ const SELECTIONS = [
         beats: ['scissors','rock','paper']
     }
 ]
+const history = document.querySelector('.results')
+
+// MAIN FLOW 
 
 selectionButtons.forEach(selectionButton => {
     selectionButton.addEventListener('click', event => {
@@ -34,11 +38,21 @@ selectionButtons.forEach(selectionButton => {
         const selection = SELECTIONS.find(selection => selection.name === selectionName)
         makeSelection(selection);
         showSpock();
+        cleanUpBottom();
     })
 })
 
 spockButton.addEventListener('click',hideSpock)
 
+// FUNCTIONALITIES
+
+// Computer Selection
+function randomSelection() {
+    const randomIndex = Math.floor(Math.random() * SELECTIONS.length);
+    return SELECTIONS[randomIndex];
+}
+
+// User Selection
 function makeSelection(selection){
     const computerSelection = randomSelection();
     const userWins = isWinner(selection, computerSelection);
@@ -48,24 +62,6 @@ function makeSelection(selection){
     if (computerWins) incrementScore(computerScoreSpan)
     else if (userWins) incrementScore(userScoreSpan)
 }
-
-function randomSelection() {
-    const randomIndex = Math.floor(Math.random() * SELECTIONS.length);
-    return SELECTIONS[randomIndex];
-}
-
-function isWinner(selection, opponentSelection) {
-    return selection.beats.includes(opponentSelection.name);
-}
-
-function addSelectionResult(selection, isWinner) {
-    const div = document.createElement('div')
-    div.innerText = selection.emoji
-    div.classList.add('result-selection')
-    if (isWinner) div.classList.add('winner')
-    finalColumn.after(div);
-}
-
 // same random probability for the user, when random number is 4, the spock button is shown
 function showSpock() {
     let randomness = Math.ceil(Math.random() * 4);
@@ -74,10 +70,27 @@ function showSpock() {
     spockButton.classList.remove('secret')}
 }
 
+// Winner Determination and Display
+function isWinner(selection, opponentSelection) {
+    return selection.beats.includes(opponentSelection.name);
+}
+function addSelectionResult(selection, isWinner) {
+    const div = document.createElement('div')
+    div.innerText = selection.emoji
+    div.classList.add('result-selection')
+    if (isWinner) div.classList.add('winner')
+    finalColumn.after(div);
+}
+
+// other general display Functionalities
 function hideSpock(){
     spockButton.classList.add('secret')
 }
-
 function incrementScore(scoreSpan) {
     scoreSpan.innerText = parseInt(scoreSpan.innerText) +1
 }
+
+// not working yet
+// function cleanUpBottom(){
+    // finalColumn.removeLastChild()
+// }
