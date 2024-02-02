@@ -38,7 +38,7 @@ selectionButtons.forEach(selectionButton => {
         const selection = SELECTIONS.find(selection => selection.name === selectionName)
         makeSelection(selection);
         showSpock();
-        cleanUpBottom();
+        // cleanUpBottom(); // not working yet
     })
 })
 
@@ -92,5 +92,6 @@ function incrementScore(scoreSpan) {
 
 // not working yet
 // function cleanUpBottom(){
-    // finalColumn.removeLastChild()
+    // history.removeChild([history.children[9],history.children[10]])
+    // history.removeChild(history.children[12])
 // }

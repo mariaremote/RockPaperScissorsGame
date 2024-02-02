@@ -14,6 +14,19 @@ Simultaneously there is a score for each player that keeps track of their victor
 
 ## My Spin on this
 
-- Added an additional `Spock` hand that shows up randomly (25% chance) and can beat all other hands. The computer will play this hand also at the same probability. 
+- An additional `Spock` hand that shows up randomly (25% chance) and can beat all other hands. The computer will play this hand also at the same probability. 
 
-- Added a "fade-out" in the game history to only ever show the last `6` games played
+- A "fade-out" in the game history to only ever show the last `6` games played
+
+## Issues
+
+When trying to build the "fade-out" of the game history, my approach was to simply remove the last child items through their index.
+However, since the game history is added in pairs, I need to remove two children at the same time also.
+
+Currently I am exploring the following solutions: 
+
+- set an additional class attribute for the "last-children" and then remove these collectively with `querySelectorAll('.last-children')`
+
+- using the CSS grid container itself to limit the display of rows (overflow will simply be hidden)
+
+
