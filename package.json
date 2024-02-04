@@ -1,0 +1,11 @@
+{
+  "name": "rockpaperscissorsgame",
+  "version": "1.0.0",
+  "description": "This simple Rock-Paper-Scissor Browser Game I built using this [Youtube Tutorial](https://youtu.be/1yS-JV4fWqY).",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
