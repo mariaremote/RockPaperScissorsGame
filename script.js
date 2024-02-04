@@ -12,6 +12,7 @@ const SELECTIONS = [
         emoji: '✊',
         beats: ['scissors']
     },
+
     {
         name: 'paper',
         emoji: '🤚',
