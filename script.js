@@ -84,7 +84,8 @@ function addSelectionResult(selection, isWinner) {
     div.innerText = selection.emoji;
     div.classList.add('result-selection');
     if (isWinner) div.classList.add('winner');
-    finalColumn.after(div);
+    // finalColumn.after(div);
+    history.appendChild(div);
 }
 
 // other general display Functionalities
