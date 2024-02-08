@@ -5,13 +5,12 @@ const spockButton = document.getElementById('spock');
 const finalColumn = document.querySelector('[data-final-column]');
 const computerScoreSpan = document.querySelector('[data-computer-score]');
 const userScoreSpan = document.querySelector('[data-user-score]');
+const history = document.querySelector('.results');
 const SELECTIONS = [
     {
         name: 'rock',
         emoji: '✊',
         beats: ['scissors'],
-
-
     },
     {
         name: 'paper',
@@ -29,7 +28,6 @@ const SELECTIONS = [
         beats: ['scissors', 'rock', 'paper'],
     },
 ];
-const history = document.querySelector('.results');
 
 
 // MAIN FLOW
@@ -42,7 +40,7 @@ selectionButtons.forEach((selectionButton) => {
         );
         makeSelection(selection);
         showSpock();
-        // cleanUpBottom(); // not working yet
+        cleanUpBottom();
     });
 });
 
@@ -84,8 +82,7 @@ function addSelectionResult(selection, isWinner) {
     div.innerText = selection.emoji;
     div.classList.add('result-selection');
     if (isWinner) div.classList.add('winner');
-    // finalColumn.after(div);
-    history.appendChild(div);
+    finalColumn.after(div);
 }
 
 // other general display Functionalities
@@ -96,8 +93,7 @@ function incrementScore(scoreSpan) {
     scoreSpan.innerText = parseInt(scoreSpan.innerText) + 1;
 }
 
-// not working yet
-// function cleanUpBottom(){
-// history.removeChild([history.children[9],history.children[10]])
-// history.removeChild(history.children[12])
-// }
+function cleanUpBottom(){
+    history.removeChild(history.children[12])
+    history.removeChild(history.children[12])
+}
