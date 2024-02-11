@@ -2,6 +2,7 @@
 
 const selectionButtons = document.querySelectorAll('[data-selection]');
 const spockButton = document.getElementById('spock');
+
 const finalColumn = document.querySelector('[data-final-column]');
 const computerScoreSpan = document.querySelector('[data-computer-score]');
 const userScoreSpan = document.querySelector('[data-user-score]');
@@ -11,34 +12,32 @@ const SELECTIONS = [
     {
         name: 'rock',
         emoji: '✊',
-        beats: ['scissors'],
+        beats: ['scissors']
     },
+
     {
         name: 'paper',
         emoji: '🤚',
-        beats: ['rock'],
+        beats: ['rock']
     },
     {
         name: 'scissors',
         emoji: '✌',
-        beats: ['paper'],
+        beats: ['paper']
     },
     {
         name: 'spock',
         emoji: '🖖',
-        beats: ['scissors', 'rock', 'paper'],
-    },
+        beats: ['scissors', 'rock', 'paper']
+    }
 ];
-
 
 // MAIN FLOW
 
 selectionButtons.forEach((selectionButton) => {
     selectionButton.addEventListener('click', (event) => {
         const selectionName = selectionButton.dataset.selection;
-        const selection = SELECTIONS.find(
-            (selection) => selection.name === selectionName,
-        );
+        const selection = SELECTIONS.find((selection) => selection.name === selectionName);
         makeSelection(selection);
         showSpock();
         cleanUpBottom();
