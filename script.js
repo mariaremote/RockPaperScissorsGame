@@ -2,7 +2,6 @@
 
 const selectionButtons = document.querySelectorAll('[data-selection]');
 const spockButton = document.getElementById('spock');
-
 const finalColumn = document.querySelector('[data-final-column]');
 const computerScoreSpan = document.querySelector('[data-computer-score]');
 const userScoreSpan = document.querySelector('[data-user-score]');
@@ -14,7 +13,6 @@ const SELECTIONS = [
         emoji: '✊',
         beats: ['scissors']
     },
-
     {
         name: 'paper',
         emoji: '🤚',
@@ -35,7 +33,7 @@ const SELECTIONS = [
 // MAIN FLOW
 
 selectionButtons.forEach((selectionButton) => {
-    selectionButton.addEventListener('click', (event) => {
+    selectionButton.addEventListener('click', () => {
         const selectionName = selectionButton.dataset.selection;
         const selection = SELECTIONS.find((selection) => selection.name === selectionName);
         makeSelection(selection);
@@ -93,9 +91,8 @@ function incrementScore(scoreSpan) {
     scoreSpan.innerText = parseInt(scoreSpan.innerText) + 1;
 }
 
-
 function cleanUpBottom() {
-    const historyRemovalIndex = (maxHistoryRows * 2) + 2; // each row has two hands plus including the scores for computer and user
-    history.removeChild(history.children[historyRemovalIndex])
-    history.removeChild(history.children[historyRemovalIndex])
+    const historyRemovalIndex = maxHistoryRows * 2 + 2; // each row has two hands plus including the scores for computer and user
+    history.removeChild(history.children[historyRemovalIndex]);
+    history.removeChild(history.children[historyRemovalIndex]);
 }
