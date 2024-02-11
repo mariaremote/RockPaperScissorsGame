@@ -2,6 +2,8 @@
 
 This simple Rock-Paper-Scissor Browser Game I built using this [Youtube Tutorial](https://youtu.be/1yS-JV4fWqY). 
 
+You can play my version [HERE](https://mariaremote.github.io/RockPaperScissorsGame/).
+
 ![Screenshot of Game](screenshot.png)
 
 ## Description
