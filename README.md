@@ -31,7 +31,7 @@ Currently I am exploring the following solutions:
 
 ## Solution
 
-This is one of the classical OMG moments, where the solution just hits you like a hammer.
+This is one of the classic OMG moments, where the solution just hits you like a hammer.
 I was correct with removing the last child items through their index, but all I had to do is to keep the same index as the order of the children changed, in order to remove the correct pair of hands from the history. 
 
 Hence by calling the `.removeChild` function twice, but with the same index I make sure the sequence of child-removal is guaranteed. 
@@ -43,6 +43,6 @@ function cleanUpBottom(){
 }
 ```
 
-This was a logical obstacle to overcome more than a programmatical. ✌😇
+This was a logical obstacle to overcome more than a programmatic. ✌😇
 
 

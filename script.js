@@ -6,6 +6,7 @@ const finalColumn = document.querySelector('[data-final-column]');
 const computerScoreSpan = document.querySelector('[data-computer-score]');
 const userScoreSpan = document.querySelector('[data-user-score]');
 const history = document.querySelector('.results');
+const maxHistoryRows = 5;
 const SELECTIONS = [
     {
         name: 'rock',
@@ -93,7 +94,9 @@ function incrementScore(scoreSpan) {
     scoreSpan.innerText = parseInt(scoreSpan.innerText) + 1;
 }
 
-function cleanUpBottom(){
-    history.removeChild(history.children[12])
-    history.removeChild(history.children[12])
+
+function cleanUpBottom() {
+    const historyRemovalIndex = (maxHistoryRows * 2) + 2; // each row has two hands plus including the scores for computer and user
+    history.removeChild(history.children[historyRemovalIndex])
+    history.removeChild(history.children[historyRemovalIndex])
 }
