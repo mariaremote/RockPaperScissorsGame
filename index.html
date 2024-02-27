@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Rock-Paper-Scissors</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="styles.css">
-        <script src="script.js" async defer></script>
-    </head>
-    <body>
-        <div class="selections">
-            <button class="selection" data-selection="rock">✊</button>
-            <button class="selection" data-selection="paper">🤚</button>
-            <button class="selection" data-selection="scissors">✌</button>
-            <button class="selection secret" data-selection="spock" id="spock">🖖</button>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Rock-Paper-Scissors</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" async defer></script>
+</head>
+
+<body>
+    <div class="selections">
+        <button class="selection" data-selection="rock">✊</button>
+        <button class="selection" data-selection="paper">🤚</button>
+        <button class="selection" data-selection="scissors">✌</button>
+        <button class="selection secret" data-selection="spock" id="spock">🖖</button>
+    </div>
+    <div class="results">
+        <div>
+            <span class="result-score" data-user-score>0</span>
+            <h2>You</h2>
         </div>
-        <div class="results">
-            <div>
-                <span class="result-score" data-user-score>0</span>
-                <h2>You</h2>
-            </div>
-            <div data-final-column>
-                <span class="result-score" data-computer-score>0</span>
-                <h2>Computer</h2>
-            </div>
-            <!-- Dynamic Part from JavaScript
+        <div data-final-column>
+            <span class="result-score" data-computer-score>0</span>
+            <h2>Computer</h2>
+        </div>
+        <!-- Dynamic Part from JavaScript
             <div class="result-selection winner">✊</div>
             <div class="result-selection">✌</div> -->
-        </div>     
-    </body>
+    </div>
+</body>
+
 </html>
