@@ -2,10 +2,9 @@
 
 const selectionButtons = document.querySelectorAll('[data-selection]');
 const spockButton = document.getElementById('spock');
-const finalColumn = document.querySelector('[data-final-column]');
+const history = document.querySelector('[data-history]');
 const computerScore = document.querySelector('[data-computer-score]');
 const userScore = document.querySelector('[data-user-score]');
-const history = document.querySelector('.results');
 const maxHistoryRows = 5;
 const SELECTIONS = [
     {
@@ -81,7 +80,8 @@ function addSelectionResult(chosenHand, winnerOfRound) {
     div.innerText = chosenHand.emoji;
     div.classList.add('result-selection');
     if (winnerOfRound) div.classList.add('winner');
-    finalColumn.after(div);
+    history.firstChild ? history.firstChild.before(div) : history.appendChild(div);
+    // finalColumn.after(div);
 }
 
 function incrementScore(scoreSpan) {
@@ -89,7 +89,7 @@ function incrementScore(scoreSpan) {
 }
 
 function cleanUpBottom() {
-    const historyRemovalIndex = maxHistoryRows * 2 + 2; 
+    const historyRemovalIndex = maxHistoryRows * 2;
     history.removeChild(history.children[historyRemovalIndex]);
     history.removeChild(history.children[historyRemovalIndex]);
 }
