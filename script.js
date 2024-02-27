@@ -2,17 +2,17 @@
 
 const selectionButtons = document.querySelectorAll('[data-selection]');
 const spockButton = document.getElementById('spock');
-
 const finalColumn = document.querySelector('[data-final-column]');
-const computerScoreSpan = document.querySelector('[data-computer-score]');
-const userScoreSpan = document.querySelector('[data-user-score]');
+const computerScore = document.querySelector('[data-computer-score]');
+const userScore = document.querySelector('[data-user-score]');
+const history = document.querySelector('.results');
+const maxHistoryRows = 5;
 const SELECTIONS = [
     {
         name: 'rock',
         emoji: '✊',
         beats: ['scissors']
     },
-
     {
         name: 'paper',
         emoji: '🤚',
@@ -29,17 +29,16 @@ const SELECTIONS = [
         beats: ['scissors', 'rock', 'paper']
     }
 ];
-const history = document.querySelector('.results');
 
-// MAIN FLOW
+// MAIN FLOW onclick
 
 selectionButtons.forEach((selectionButton) => {
-    selectionButton.addEventListener('click', (event) => {
+    selectionButton.addEventListener('click', () => {
         const selectionName = selectionButton.dataset.selection;
-        const selection = SELECTIONS.find((selection) => selection.name === selectionName);
-        makeSelection(selection);
+        const userSelection = SELECTIONS.find((option) => option.name === selectionName);
+        determineWinner(userSelection);
         showSpock();
-        // cleanUpBottom(); // not working yet
+        cleanUpBottom();
     });
 });
 
@@ -47,53 +46,50 @@ spockButton.addEventListener('click', hideSpock);
 
 // FUNCTIONALITIES
 
-// Computer Selection
-function randomSelection() {
+function getComputerSelection() {
     const randomIndex = Math.floor(Math.random() * SELECTIONS.length);
     return SELECTIONS[randomIndex];
 }
 
-// User Selection
-function makeSelection(selection) {
-    const computerSelection = randomSelection();
-    const userWins = isWinner(selection, computerSelection);
-    const computerWins = isWinner(computerSelection, selection);
+function determineWinner(userSelection) {
+    const computerSelection = getComputerSelection();
+    const userWins = checksIfHandWins(userSelection, computerSelection); // returns true or false
+    const computerWins = checksIfHandWins(computerSelection, userSelection); // returns false or true
     addSelectionResult(computerSelection, computerWins);
-    addSelectionResult(selection, userWins);
-    if (computerWins) incrementScore(computerScoreSpan);
-    else if (userWins) incrementScore(userScoreSpan);
+    addSelectionResult(userSelection, userWins);
+    if (computerWins) incrementScore(computerScore);
+    else if (userWins) incrementScore(userScore);
 }
 // same random probability for the user, when random number is 4, the spock button is shown
 function showSpock() {
     const randomness = Math.ceil(Math.random() * 4);
-    console.log(randomness);
     if (randomness === 4) {
         spockButton.classList.remove('secret');
     }
 }
 
-// Winner Determination and Display
-function isWinner(selection, opponentSelection) {
-    return selection.beats.includes(opponentSelection.name);
-}
-function addSelectionResult(selection, isWinner) {
-    const div = document.createElement('div');
-    div.innerText = selection.emoji;
-    div.classList.add('result-selection');
-    if (isWinner) div.classList.add('winner');
-    finalColumn.after(div);
-}
-
-// other general display Functionalities
 function hideSpock() {
     spockButton.classList.add('secret');
 }
+
+function checksIfHandWins(handOne, handTwo) {
+    return handOne.beats.includes(handTwo.name);
+}
+
+function addSelectionResult(chosenHand, winnerOfRound) {
+    const div = document.createElement('div');
+    div.innerText = chosenHand.emoji;
+    div.classList.add('result-selection');
+    if (winnerOfRound) div.classList.add('winner');
+    finalColumn.after(div);
+}
+
 function incrementScore(scoreSpan) {
     scoreSpan.innerText = parseInt(scoreSpan.innerText) + 1;
 }
 
-// not working yet
-// function cleanUpBottom(){
-// history.removeChild([history.children[9],history.children[10]])
-// history.removeChild(history.children[12])
-// }
+function cleanUpBottom() {
+    const historyRemovalIndex = maxHistoryRows * 2 + 2; 
+    history.removeChild(history.children[historyRemovalIndex]);
+    history.removeChild(history.children[historyRemovalIndex]);
+}
