@@ -6,8 +6,8 @@ body {
 .selections {
     display: flex;
     justify-content: center;
-    display: -webkit-flex;
-    -webkit-justify-content: center;
+    /* display: -webkit-flex;
+    -webkit-justify-content: center; */
 }
 
 .selections * {
