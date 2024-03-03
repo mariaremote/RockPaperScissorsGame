@@ -6,14 +6,13 @@ body {
 .selections {
     display: flex;
     justify-content: center;
-    /* display: -webkit-flex;
-    -webkit-justify-content: center; */
+    /* display: -webkit-flex; */
+    /* -webkit-justify-content: center; */
 }
 
-.selections * {
+/* .selections * {
     /* margin: 0; */
-    padding: 0 0.7rem;
-}
+/* padding: 0 0.7rem; */
 
 .selection {
     background: none;
