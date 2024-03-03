@@ -11,7 +11,8 @@ body {
 }
 
 .selections * {
-    margin: 0;
+    /* margin: 0; */
+    padding: 0 0.7rem;
 }
 
 .selection {
