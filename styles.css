@@ -6,6 +6,13 @@ body {
 .selections {
     display: flex;
     justify-content: center;
+    display: -webkit-flex;
+    -webkit-justify-content: center;
+}
+
+.selections * {
+    margin: 0;
+    padding: 0 0.7rem;
 }
 
 .selection {
@@ -14,7 +21,6 @@ body {
     outline: none;
     cursor: pointer;
     font-size: 4rem;
-    flex-shrink: 1;
 }
 
 .selection:hover {
