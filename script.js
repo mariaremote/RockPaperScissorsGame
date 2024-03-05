@@ -5,7 +5,7 @@ const spockButton = document.getElementById('spock');
 const history = document.querySelector('[data-history]');
 const computerScore = document.querySelector('[data-computer-score]');
 const userScore = document.querySelector('[data-user-score]');
-const maxHistoryRows = 5;
+const maxHistoryRows = 8;
 const SELECTIONS = [
     {
         name: 'rock',
@@ -90,6 +90,8 @@ function incrementScore(scoreSpan) {
 
 function cleanUpBottom() {
     const historyRemovalIndex = maxHistoryRows * 2;
-    history.removeChild(history.children[historyRemovalIndex]);
-    history.removeChild(history.children[historyRemovalIndex]);
+    if (history.childElementCount > historyRemovalIndex) {
+        history.removeChild(history.children[historyRemovalIndex]);
+        history.removeChild(history.children[historyRemovalIndex]);
+    }
 }

@@ -60,10 +60,26 @@ body {
 
 .result-selection {
     font-size: 2rem;
-    opacity: .5;
+    opacity: 0.6;
 }
 
 .result-selection.winner {
     font-size: 2.5rem;
     opacity: 1;
+}
+
+/* Proper Fade-out effect */
+
+/* as soon as there are 5 or more divs: */
+.history:has(.result-selection:nth-child(n+5)) {
+
+    /* styling the 5th and all following divs */
+    .result-selection:nth-of-type(n+5) {
+        opacity: 0.3;
+    }
+
+    /* styling the 9th and all following divs */
+    .result-selection:nth-of-type(n+9) {
+        opacity: 0.1;
+    }
 }
